@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h2>你好，来一起启动{{name}}吧</h2>
+        <input type="text" placeholder="按下回车显示" @keyup.enter="showInfo">
+    </div>
+    <script>
+        new Vue({
+            el:'#root',
+            data:{
+                name:'原神',
+            },
+            methods:{
+                showInfo(e){
+                    console.log(e.key,e.keyCode);
+                    
+                    console.log(e.target.value); 
+                }
+            }
+        })
+    </script>
+</body>
+</html>

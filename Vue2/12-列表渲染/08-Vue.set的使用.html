@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.set的使用</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h2>员工信息表</h2>
+        <button @click="addSex">添加性别</button>
+        <h2>姓名：{{persons.name}}</h2>
+        <h2>年龄：{{persons.age}}</h2>
+        <h2>性别：{{persons.sex}}</h2>
+
+    </div>
+
+    <script>
+        const vm=new Vue({
+            el: '#root',
+            data: {
+                persons: {
+                    name:'pink',
+                    age:25,
+                }
+            },
+
+            methods: {
+                addSex() {
+                    // Vue.set(this.persons,'sex','男')
+                    vm.$set(this.persons,'sex','男')
+                }
+            },
+        })
+
+    </script>
+</body>
+
+</html>

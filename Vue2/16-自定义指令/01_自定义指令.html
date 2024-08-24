@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义指令</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h2>你好，{{name}}</h2>
+        <div>当前n的值：<span v-text="n"></span></div>
+        <div>放大10倍后n的值：<span v-big="n"></span></div>
+        <button @click="n++">点我加一</button>
+        <hr>
+        <input type="text" v-fbind:value="n">
+    </div>
+    <script>
+        const vm=new Vue({
+            el:'#root',
+            data:{
+                name:'张杰',
+                n:1,
+            },
+            // 自定义属性
+            directives:{
+                // 自定义属性-对象式
+                fbind:{
+                    // 当指令和元素第一次绑定的时候调用
+                    bind(element,binding){
+                        element.value=binding.value
+                    },
+                    // 指令所在元素插入页面的时候调用
+                    inserted(element,binding){
+                        element.focus()
+                    },
+                    // 模板重新解析的时候调用
+                    update(element,binding){
+                        element.value=binding.value
+                        element.focus()
+                    }
+                },
+
+                // 自定义属性-函数式
+                // 调用情况1.当指令和元素第一次绑定的时候
+                //         2.模板重新解析的时候
+                //两个参数，真实的标签对象,绑定的变量
+                big(element,binding){
+                    element.innerText=binding.value * 10
+                }
+            }
+        })
+    </script>
+</body>
+</html>

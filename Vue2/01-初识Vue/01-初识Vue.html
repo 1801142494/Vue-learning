@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-初识Vue</title>
+    <!-- 引入Vue -->
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 准备一个容器 -->
+    <div id="root">
+        <h1>hello,{{name}}</h1>
+    </div>
+
+    <script>
+        // 创建Vue实例
+        new Vue({
+            // el用于指定当前Vue实例为哪个容器服务，值通常为css选择器
+            el:'#root',
+            // data中用于存储数据，数据供el指向的容器使用
+            data:{
+                name:'蔡徐坤'
+            }
+
+        })
+    </script>
+</body>
+
+</html>

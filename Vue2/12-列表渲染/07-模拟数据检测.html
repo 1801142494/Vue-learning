@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模拟数据检测</title>
+</head>
+<body>
+    <script>
+        let data={
+            name:'pink',
+            age: 18
+        }
+        // 创造一个监视实例对象
+        const obs =new Objserver(data)
+        //创造vm实例对象
+        let vm ={}
+        vm._data=data=obs
+
+        
+        function Objserver(obj){
+            // 汇总属性成数组
+            const keys = Object.keys(obj)
+            // 遍历
+            keys.forEach(k=>{
+                Object.defineProperty(this,k,{
+                    get(){
+                        return obj[k]
+                    },
+                    set(val){
+                        obj[k] = val
+                    }
+                })
+            })
+        }
+        
+        
+    </script>
+</body>
+</html>

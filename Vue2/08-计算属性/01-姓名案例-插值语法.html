@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-姓名案例-插值语法</title>
+    <script src="../js/vue.js"></script>
+
+</head>
+<body>
+    <div id="root">
+        姓：<input type="text" v-model="fistName"><br>
+        名：<input type="text" v-model="lastName"><br>
+        全名：<span>{{fistName}}-{{lastName}}</span>
+    </div>
+
+    <script>
+         new Vue({
+            el:'#root',
+            data:{
+                fistName:'张',
+                lastName:'三'
+            },
+            methods:{
+               
+            }
+        })
+    </script>
+</body>
+</html>

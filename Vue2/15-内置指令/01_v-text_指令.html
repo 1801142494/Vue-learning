@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-text</title>
+    <script src="../js/vue.js"></script>
+    <script src="../js/dayjs.min.js"></script>
+</head>
+<body>
+    <div id="root">
+        <div>快来玩-{{name}}</div>
+        <!-- v-text把拿到的值作为字符串替换为标签内容 -->
+        <div v-text="name">快来玩</div>
+        <div v-text="str">快来玩</div>
+    </div>
+    <script>
+        new Vue({
+            el:'#root',
+            data:{
+               name:'星穹铁道',
+               str:'<h2>你好啊</h2>'
+            },
+        })
+    </script>
+</body>
+</html>

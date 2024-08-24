@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分析生命周期</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+       
+        <h2>当前n的值:{{n}}</h2>
+        <button @click="add">点击+1</button>
+        <button @click="destroy">销毁</button>
+    </div>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                n: 1,
+            },
+                methods: {
+                add(){
+                    console.log('add函数调用了');
+                    this.n++
+                },
+                destroy(){
+                    this.$destroy()
+                }
+            },
+         
+            // 生命周期
+            beforeCreate() {
+                console.log('beforeCreate');
+            },
+            created() {
+                console.log('created');
+            },
+            beforeMount() {
+                console.log('beforeMount');
+            },
+            mounted() {
+                console.log('mounted');
+            },
+            beforeUpdate() {
+                console.log('beforeUpdate');
+            },
+            updated() {
+                console.log('updated');
+            },
+            beforeDestroy() {
+                console.log('beforeDestroy');
+            },
+            destroyed() {
+                console.log('destroyed');
+            },
+        })
+    </script>
+</body>
+
+</html>

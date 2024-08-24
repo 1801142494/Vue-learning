@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-pre</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!-- 1.v-pre修饰的标签不会被Vue解析
+             2.可用于没有Vue语句修饰的标签，加快渲染-->
+        <h2 v-pre>你好</h2>
+
+        <div v-pre>Vue学习很简单</div>
+        <div v-pre>n的值：{{n}}</div>
+        <button v-pre @click="n++">点我加一</button>
+    </div>
+    <script>
+        new Vue({
+            el:'#root',
+            data:{
+               n:1,
+            },
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05_姓名案例-监视属性</title>
+    <script src="../js/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="root">
+        姓：<input type="text" v-model="fistName"><br>
+        名：<input type="text" v-model="lastName"><br>
+        全名：<span>{{fullName}}</span>
+    </div>
+
+    <script>
+        const vm=new Vue({
+            el: '#root',
+            data: {
+                fistName: '张',
+                lastName: '三',
+                fullName:'张-三'
+            },
+            watch:{
+                fistName:{
+                    handler(val){
+                        this.fullName = val+'-'+this.lastName
+                    }
+                },
+                lastName:{
+                    handler(val){
+                        this.fullName = this.fistName+'-'+val
+                    }
+                },
+            }
+          
+        })
+    </script>
+</body>
+
+</html>

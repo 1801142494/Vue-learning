@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.VueComponent</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!-- 2.当写上组件后，解析的时候，会自动创建组件的实例对象 -->
+        <school></school>
+        <hello></hello>
+    </div>
+   
+
+    <script>
+         // 创建student组件
+         const student=Vue.extend({
+            data() {
+                return {
+                    name:'王五',
+                    age:18
+                }
+            },
+            template:`
+                <div>
+                    <h2>姓名：{{name}}</h2>
+                    <h2>年龄：{{age}}</h2>
+                </div>
+            `
+        })
+        // 创建school组件
+        const school=Vue.extend({
+            data() {
+                return {
+                    name:'尚硅谷',
+                    adress:'河南商丘'
+                }
+            },
+            template:`
+                <div>
+                    <h2>校名：{{name}}</h2>
+                    <h2>地址：{{adress}}</h2>
+                    <student></student>
+                </div>
+            `,
+            components:{
+                student
+            }
+        })
+          // 创建school组件
+          const hello=Vue.extend({
+            data() {
+                return {
+                    name:'尚硅谷',
+                }
+            },
+            template:`
+                <div>
+                    <h2>欢迎来到{{name}}</h2>
+                    <button @click='alert'>点击弹窗</button>
+                </div>
+            `,
+            methods: {
+                alert(){
+                    // 4.组件的this是VueComponent实例
+                    console.log('组件的this',this);
+                    alert("你好啊")
+                }
+            },
+        })
+        // 1.组件究竟是什么 是个构造方法
+        console.log('组件，'+school);
+        console.log('组件，'+hello);
+        // 3.每次调用Vue.extend,都返回一个新的组件对象VueComponent
+        console.log(`组件是否相等:${hello===school}`);
+
+        const vm=new Vue({
+            el:'#root',
+            components:{
+                school,
+                hello,
+            }
+        })
+    </script>
+</body>
+</html>

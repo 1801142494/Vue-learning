@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注意点</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <my-chool></my-chool>
+    </div>
+    <script>
+     
+        const school =Vue.extend({
+            data() {
+                return {
+                    school:{
+                        name:'张三培训',
+                        adress:'缅甸佤邦'
+                    },
+                }
+            },
+            template:`
+                <div>
+                    <h2>学校名：{{school.name}}</h2>
+                    <h2>学校地址：{{school.adress}}</h2>
+                    <button @click='myAlert'>点我弹窗</button>
+                </div>
+            `,
+            methods: {
+                myAlert(){
+                    alert('1')
+                }
+            },
+        })
+        new Vue({
+            el:'#root',
+            components:{
+                // School:school,
+                'my-chool':school,
+            }
+        })
+    </script>
+</body>
+</html>

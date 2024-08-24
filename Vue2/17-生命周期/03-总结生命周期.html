@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>引出生命周期</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <!-- 要求,页面一打开不断循环透明度 -->
+        <h2 :style="{opacity:opacity}">实现变透明循环</h2>
+    </div>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                opacity: 1,
+            },
+            methods: {
+               
+            },
+           mounted() {
+                setInterval(()=>{
+                    this.opacity-=0.01
+                    if(this.opacity<=0) this.opacity=1
+                },16)
+           },
+        })
+    </script>
+</body>
+
+</html>

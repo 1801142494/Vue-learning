@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-事件的修饰符</title>
+</head>
+<body>
+    <div id="root">
+        <h2>你好，来一起启动{{name}}吧</h2>
+        <!-- 1.prevent修饰符，阻止默认事件 -->
+        <a href="https://www.baidu.com/" @click.prevent="showInfo">点我</a>
+
+        <div @click="infoStop">
+            <!-- 2.stop修饰符，阻止冒泡 -->
+            <button @click.stop="infoStop">点我弹窗</button>
+        </div>
+        <!-- 3.once修饰符，只触发一次 -->
+        <button @click.once="showOnce">我只触发一次</button>
+
+        <!-- 4.capture修饰符，使用捕获模式 -->
+        <div @click.capture="infoCapture(1)">
+            <button @click="infoCapture(2)">开启捕获</button>
+        </div>
+         <!-- 5.self修饰符，只有操作的是当前对象才触发 -->
+        <div @click.self="infoSelf(1)">
+            <button @click="infoSelf(2)">self</button>
+        </div>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        new Vue({
+            el:'#root',
+            data:{
+                name:'原神'
+            },
+            methods:{
+                showInfo(){
+                    alert('同学你好')
+                },
+                infoStop(){
+                    alert('展示冒泡')
+                },
+                showOnce(){
+                    alert('我只触发一次')
+                },
+                infoCapture(e){
+                    console.log(e);
+                },
+                infoSelf(e){
+                    console.log(e);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

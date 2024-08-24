@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_天气显示_监视属性</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h2>今天的天气很{{info}}</h2>
+        <button @click="change">切换天气</button>
+    </div>
+
+    <script>
+        const vm=new Vue({
+            el: '#root',
+            data: {
+                isHot: true,
+            },
+            methods: {
+                change() {
+                    this.isHot = !this.isHot
+                }
+            },
+            computed: {
+                info() {
+                    return this.isHot ? '炎热': '寒冷'
+                }
+            },
+            // 监视写法一
+            // watch:{
+            //     isHot:{
+            //         handler(newValue,oldValue){
+            //             console.log(newValue,oldValue);
+                        
+            //         }
+            //     }
+            // }
+        })
+
+        // 监视写法二
+        vm.$watch("isHot",{
+            handler(newValue,oldValue){
+                console.log(newValue,oldValue);
+            }
+        })
+    </script>
+</body>
+
+</html>

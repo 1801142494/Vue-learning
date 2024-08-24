@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>条件渲染</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h2>当前n是{{n}}</h2>
+        <button @click="n++">点我加一</button>   
+
+        <!-- <div v-show="n===1">v-show</div> -->
+
+        <!-- <div v-if="n===1">v-if</div> -->
+
+        <!-- <div v-if="n===1">Angular</div>
+        <div v-else-if="n===2">React</div>
+        <div v-else-if="n===3">Vue</div>
+        <div v-else="n===4">哈哈</div> -->
+
+        <!-- 当需要一个判断控制多个
+                注：template只能和v-if使用 -->
+        <template v-if="n===1">
+            <h2>欢迎</h2>
+            <h2>来到</h2>
+            <h2>英雄联盟</h2>
+        </template>
+    </div>
+
+    <script>
+        new Vue({
+            el:'#root',
+            data:{
+                n:0
+            },
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注意点</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+       
+    </div>
+
+    
+    <script>
+    // 定义学生组件
+    const student =Vue.extend({
+            data() {
+                return {
+                    student:{
+                        name:'二刘',
+                        age:18
+                    }
+                }
+            },
+            template:`
+                <div>
+                    <h2>学生姓名：{{student.name}}</h2>
+                    <h2>学生年龄：{{student.age}}</h2>
+                </div>
+            `
+        })
+    // 定义school组件
+    const school =Vue.extend({
+        data() {
+            return {
+                school:{
+                    name:'张三培训',
+                    adress:'缅甸佤邦'
+                },
+            }
+        },
+        template:`
+            <div>
+                <h2>学校名：{{school.name}}</h2>
+                <h2>学校地址：{{school.adress}}</h2>
+                <button @click='myAlert'>点我弹窗</button>
+                <student></student>
+            </div>
+        `,
+        methods: {
+            myAlert(){
+                alert('1')
+            }
+        },
+        components:{
+            student
+        }
+    })
+    // 定义hello组件
+    const hello=Vue.extend({
+        template:`<h1>Hello来到这里</h1>`
+    })
+    
+    // 定义app组件（实际开发一般会定义一个app组件管理所有组件）
+    const app=Vue.extend({
+        template:`
+            <div>
+                <school></school>
+                <hello></hello>
+            </div>            
+        `,
+        components:{
+            school,
+            hello
+        }
+    })
+    
+    new Vue({
+        el:'#root',
+        components:{
+            app
+        },
+        template:`<app></app>`
+    })
+    </script>
+</body>
+</html>

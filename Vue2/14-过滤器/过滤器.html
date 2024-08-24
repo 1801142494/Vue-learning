@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+    <script src="../js/dayjs.min.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h2>显示格式化后的日期</h2>
+        <!-- 用计算属性格式化 -->
+        <h3>{{formatTime}}</h3>
+        <!-- 用方methods实现 -->
+        <h3>{{getFormatTime()}}</h3>
+        <!-- 用过滤器filters实现 -->
+        <h3>{{time | timeFormat}}</h3>
+    </div>
+    <script>
+        //filter全局配置 
+        Vue.filter('mySlice',function(val){
+            return val.slice(0,4)
+        })
+        new Vue({
+            el:'#root',
+            data:{
+                time:1723882541182
+            },
+            computed:{
+                formatTime(){
+                    return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
+                }
+            },
+            methods: {
+                getFormatTime(){
+                    return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
+                }
+            },
+            filters:{
+                timeFormat(val){
+                    return dayjs(val).format('YYYY-MM-DD HH:mm:ss')
+                }
+            }
+        })
+    </script>
+</body>
+</html>

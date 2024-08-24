@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04_计算属性简写模式</title>
+    <script src="../js/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="root">
+        姓：<input type="text" v-model="fistName"><br>
+        名：<input type="text" v-model="lastName"><br>
+        全名：<span>{{fullName}}</span>
+    </div>
+
+    <script>
+        const vm=new Vue({
+            el: '#root',
+            data: {
+                fistName: '张',
+                lastName: '三'
+            },
+            computed: {
+                // 1.完整写法
+                // fullName: {
+                //     get() {
+                //         return this.fistName + '-' + this.lastName
+                //     },
+                //     set(value){
+                //         const arr=value.split('-')
+                //         console.log(arr);
+                        
+                //         this.fistName = arr[0]
+                //         this.lastName = arr[1]
+                //     }
+                // }
+
+                // 2.当不需要set的时候，简写
+                fullName(){
+                    return this.fistName + '-' + this.lastName
+                }
+            }
+        })   
+    </script>
+</body>
+
+</html>

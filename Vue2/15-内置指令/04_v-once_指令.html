@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-once</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!-- v-once修饰的标签在初次渲染后就不会再变化了 -->
+        <div v-once>初始值n，{{n}}</div>
+        <div>变化后的值n，{{n}}</div>
+        <button @click="n++">点我加一</button>
+    </div>
+    <script>
+        new Vue({
+            el:'#root',
+            data:{
+               n:1,
+            },
+        })
+    </script>
+</body>
+</html>

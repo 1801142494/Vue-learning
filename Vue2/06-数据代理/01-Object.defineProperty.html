@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-Object.defineProperty</title>
+</head>
+<body>
+    <script>
+        let num =18
+
+        const obj={
+            name:'red',
+            gender:'男',
+        }
+
+        // defineProperty用于给对象添加属性，并对属性进行设置
+        Object.defineProperty(obj,'age',{
+            // value:18,
+            // enumerable:true,//是否能被枚举
+            // writable:true,//是否能被修改
+            // configurable:true,//是否能被删除
+            get(){
+                return num
+            },
+            set(value){
+                console.log('有人修改了age，且值是,'+value);
+                num=value
+            }
+        })
+        // console.log(obj);
+        
+        // for(let k in obj){
+        // console.log(k);
+        // }
+    </script>
+</body>
+</html>

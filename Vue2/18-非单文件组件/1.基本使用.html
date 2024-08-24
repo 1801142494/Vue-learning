@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.基本使用</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!-- 第三步，使用 -->
+        <school></school>
+        <school></school>
+        <hr>
+        <student></student>
+        <student></student>
+    </div>
+    <hr>
+    <div id="root2">
+        <haha></haha>
+    </div>
+    
+    <script>
+        // 非单元组件
+        // 第一步创建
+        const school =Vue.extend({
+            // 1.1组件不能使用el属性
+            // 1.2组件的data属性要用函数式
+            data() {
+                return {
+                    school:{
+                        name:'张三培训',
+                        adress:'缅甸佤邦'
+                    },
+                }
+            },
+            // 创建对应的html模板
+            template:`
+                <div>
+                    <h2>学校名：{{school.name}}</h2>
+                    <h2>学校地址：{{school.adress}}</h2>
+                    <button @click='myAlert'>点我弹窗</button>
+                </div>
+            `,
+            methods: {
+                myAlert(){
+                    alert('1')
+                }
+            },
+        })
+        const student =Vue.extend({
+            data() {
+                return {
+                    student:{
+                        name:'二刘',
+                        age:18
+                    }
+                }
+            },
+            template:`
+                <div>
+                    <h2>学生姓名：{{student.name}}</h2>
+                    <h2>学生年龄：{{student.age}}</h2>
+                </div>
+            `
+        })
+
+        // 全局注册
+        const haha=Vue.extend({
+            data() {
+                return {
+                    name:'张三'
+                }
+            },
+            template:`
+                <h2>哈哈哈，{{name}}</h2>
+            `,
+           
+
+        })
+        Vue.component('haha',haha)
+        
+        new Vue({
+            el:'#root',
+            // 第二步，注册组件（局部注册）
+            components:{
+                // 注册为键值对的方式，可根据es6标准简写成一个
+                school:school,
+                student
+            }
+        })
+
+        new Vue({
+            el:'#root2',
+        })
+    </script>
+</body>
+</html>

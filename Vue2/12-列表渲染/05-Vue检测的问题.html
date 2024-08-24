@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表排序</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h2>员工信息表</h2>
+        <button @click="uptateMei">修改数据</button>
+        <ul>
+            <li v-for="p in persons" :key="p.id">
+                {{p.name}}-{{p.age}}
+            </li>
+        </ul>
+
+    </div>
+
+    <script>
+        const vm=new Vue({
+            el: '#root',
+            data: {
+                persons: [
+                    { id: '01', name: '马冬梅', age: 25 },
+                    { id: '02', name: '周冬雨', age: 16 },
+                    { id: '03', name: '周星驰', age: 30 },
+                    { id: '04', name: '周杰伦', age: 20 },
+                    { id: '05', name: '王冬伦', age: 22 },
+                ],
+            },
+
+            methods: {
+                uptateMei() {
+                    // this.persons[0].name = '刘德华'
+                    // this.persons[0].age = 45
+
+                    // 这个检测不到
+                    this.persons[0]={
+                        name :'刘德华',
+                        age: 45 
+                    }
+                }
+            },
+        })
+
+    </script>
+</body>
+
+</html>
