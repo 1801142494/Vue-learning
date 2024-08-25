@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <!-- 兼容ie -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 兼容移动端 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!-- 设置图标 -->
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <!-- 引入第三方样式 -->
+    <link rel="stylesheet" href="<%= BASE_URL %>css/bootstrap.css">
+    <!-- 设置标题 -->
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+    <!-- 浏览器不兼容JavaScript时候显示 -->
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <!-- 容器 -->
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
