@@ -1,0 +1,28 @@
+<template>
+    <div>
+        <School/>
+        <Student/>
+    </div>
+</template>
+
+<script>
+    import School from './components/School.vue'
+    import Student from './components/Student.vue'
+    export default {
+        name:'App',
+        components:{
+            School,
+            Student
+        },
+        methods: {
+            getObj(){
+                console.log(this.$refs);
+                
+            }
+        },
+    }
+</script>
+
+<style>
+
+</style>
