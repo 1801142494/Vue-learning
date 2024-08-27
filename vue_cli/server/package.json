@@ -1,0 +1,16 @@
+{
+  "name": "10_ajax",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "serve": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.7.4",
+    "connect-history-api-fallback": "^2.0.0",
+    "express": "^4.19.2"
+  }
+}

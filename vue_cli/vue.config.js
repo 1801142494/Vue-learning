@@ -24,6 +24,12 @@ module.exports = defineConfig({
         ws:true, 
         changeOrigin:false 
       },
+      '/miren':{
+        target:'https://api.mir6.com/',
+        pathRewrite:{'^/miren':''}, 
+        ws:true, 
+        changeOrigin:true 
+      },
     }
   }
 })
