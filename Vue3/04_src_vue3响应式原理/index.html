@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const person ={
+            name:'张三',
+            age:20
+        }
+ 
+        // #region模拟vue2的响应式
+        // const p={}
+        // for(let k in person){
+        //     Object.defineProperty(p,k,{
+        //         get(){//有人读取时候调用
+        //             console.log(`有人读取了${k}`);
+        //             return person[k]
+        //         },
+        //         set(value){//有人修改时候调用
+        //             console.log(`有人修改了了${k}值为${value}`);
+        //             person[k]=value
+        //         }
+        //     })
+        // }
+        // #endregion
+
+        // #region模拟vue3的响应式
+        const p = new Proxy(person,{
+            // 当读取时
+            get(target,propName){
+                console.log(`有人读取了p身上的${propName}`);
+                // 通过Reflect映射改变或读取值，使得不易报错
+                return Reflect.get(target,propName)
+            },
+            // 当修改或追加属性时
+            set(target,propName,value){
+                console.log(`有人修改了了p身上的${propName},我要更新页面了~`);
+                Reflect.set(target,propName,value)
+            },
+            // 删除时
+            deleteProperty(target,propName){
+                console.log(`有人删除了了p身上的${propName},我要更新页面了~`);
+                return Reflect.deleteProperty(target,propName)
+            }
+        })
+        // #endregion
+
+
+    </script>
+</body>
+</html>
